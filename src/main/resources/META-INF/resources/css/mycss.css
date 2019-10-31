@@ -1,0 +1,19 @@
+/* my own css */
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h2 {
+    color: #90c030;
+    text-align: center;
+}

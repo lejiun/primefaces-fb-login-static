@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:sec="http://www.springframework.org/security/tags">
+      xmlns:sec="http://www.springframework.org/security/tags"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
 
 <h:head>
     <title>PrimeFaces Hello World Example</title>
@@ -12,19 +14,30 @@
 
 <h:body>
 
-    <div class="authorization-div">
-        <sec:authorize access="hasRole('ROLE_USER')">
-            <p:outputLabel value="You have the USER role" />
-        </sec:authorize>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <p:outputLabel value="You have the ADMIN role" />
-        </sec:authorize>
-    </div>
+    <h:form>
+        <p:menubar>
+            <p:menuitem value="CARS" url="cars.xhtml" icon="pi pi-car" />
+            <p:menuitem value="HELLOWORLD" url="helloworld.xhtml" icon="pi pi-car" />
+            <p:menuitem value="LOGOUT" url="logout" icon="pi pi-car" />
+        </p:menubar>
+    </h:form>
+
+
 
     <h:form>
-        <a href="index.html">Go To Index</a>
-        <p:panel header="PrimeFaces Hello World Example">
+<!--        <a href="index.html">Go To Index</a>-->
+        <p:panel  header="PrimeFaces Hello World Example" styleCLass="ui-panel-titlebar">
+            <div class="authorization-div">
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <p:outputLabel value="You have the USER role" />
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <p:outputLabel value="You have the ADMIN role" />
+                </sec:authorize>
+            </div>
             <h:panelGrid columns="2" cellpadding="4">
+
+
 
                 <h:outputText value="First Name: " />
                 <p:inputText value="#{helloWorld.firstName}" />
@@ -35,13 +48,15 @@
                 <p:commandButton value="Submit" colspan="2" update="greeting"
                                  oncomplete="PF('greetingDialog').show()" />
 
-                <div><a href="cars.xhtml">Cars</a></div>
-                <div class="authenticated">Logged in as: <span id="user"></span></div>
-                <script type="text/javascript">
-                $.get("/user", function(data) {
-                    $("#user").html(data.userAuthentication.details.name);
-                });
-            </script>
+<!--                <div><a href="cars.xhtml">Cars</a></div>-->
+
+
+<!--                <div class="authenticated">Logged in as: <span id="user"></span></div>-->
+<!--                <script type="text/javascript">-->
+<!--                $.get("/user", function(data) {-->
+<!--                    $("#user").html(data.userAuthentication.details.name);-->
+<!--                });-->
+<!--            </script>-->
             </h:panelGrid>
         </p:panel>
 
@@ -53,10 +68,10 @@
         </p:dialog>
     </h:form>
 
-    <h:form onsubmit="this.action='#{request.contextPath}/logout';"
-            class="logout-form">
-        <p:commandButton value="Logout" ajax="false" />
-    </h:form>
+<!--    <h:form onsubmit="this.action='#{request.contextPath}/logout';"-->
+<!--            class="logout-form">-->
+<!--        <p:commandButton value="Logout" ajax="false" />-->
+<!--    </h:form>-->
 
 </h:body>
 </html>

@@ -17,3 +17,12 @@ h2 {
     color: #90c030;
     text-align: center;
 }
+
+th {
+color: #90c030 !important;
+}
+
+.ui-panel-titlebar {
+color: #90c030;
+text-align: center;
+}

@@ -12,6 +12,7 @@
 </h:head>
 
 <h:body>
+
     <h:form prependId="false">
 
         <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
@@ -25,14 +26,15 @@
 
             <p:commandButton value="Login" ajax="false" />
 
+            <p:button href="/login/facebook" value="Log In With Facebook"/>
+<!--            <div class="container"></div>-->
+<!--            <div class="container unauthenticated">-->
+<!--                <a href="/login/facebook">Log In With Facebook</a>-->
 
-            <div class="container"></div>
-            <div class="container unauthenticated">
-                <a href="/login/facebook">Log In With Facebook</a>
-            </div>
-            <div class="container authenticated" style="display:none">
-                Logged in as: <span id="user"></span>
-            </div>
+<!--            </div>-->
+<!--            <div class="container authenticated" style="display:none">-->
+<!--                Logged in as: <span id="user"></span>-->
+<!--            </div>-->
             <script type="text/javascript">
                 $.get("/user", function(data) {
                     $("#user").html(data.userAuthentication.details.name);
